@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Tools Website - Simplifying Your Digital Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --dark-blue: #0d47a1;
+            --light-blue: #e8f0fe;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+            --white: #ffffff;
+            --footer-bg: #000000;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo-upload {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .contact-info i {
+            margin-right: 5px;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tool-icon {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .tool-content {
+            padding: 25px;
+        }
+
+        .tool-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .tool-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .tool-link {
+            color: var(--primary-blue);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .tool-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .tool-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 24px;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .contact-details {
+            color: #aaa;
+        }
+
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .contact-info {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .tools-section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-text">MultiTools</div>
+                    <span class="logo-upload" title="Upload Logo">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+                
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>msmultitoolsite@gmail.com</span>
+                </div>
+                
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>All Your Digital Tools in One Place</h1>
+            <p>Convert files, calculate health metrics, and simplify your digital tasks with our comprehensive collection of online tools.</p>
+            <a href="#" class="cta-button">Explore Tools <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Comprehensive Tool Collection</h2>
+                <p>Access a wide range of tools for all your digital needs</p>
+            </div>
+            
+            <div class="tools-grid">
+                <!-- PDF Tools -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>PDF Conversion Tools</h3>
+                        <p>Convert PDF to Word, Excel, PowerPoint, images and vice versa with our easy-to-use tools.</p>
+                        <a href="#" class="tool-link">Explore PDF Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Image Tools -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Image Conversion Tools</h3>
+                        <p>Convert between JPG, PNG, GIF, BMP, WebP and other image formats with ease.</p>
+                        <a href="#" class="tool-link">Explore Image Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Audio Tools -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Audio Tools</h3>
+                        <p>Audio converter, sound changer, compressor and other audio manipulation tools.</p>
+                        <a href="#" class="tool-link">Explore Audio Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Video Tools -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Video Tools</h3>
+                        <p>Video converter, compressor, editor and other video processing tools.</p>
+                        <a href="#" class="tool-link">Explore Video Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Health Calculators -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Health Calculators</h3>
+                        <p>BMI, BMR, pregnancy, calorie calculators and other health-related tools.</p>
+                        <a href="#" class="tool-link">Explore Health Tools <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Other Calculators -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Other Calculators</h3>
+                        <p>Age calculator, financial calculators, and various utility calculation tools.</p>
+                        <a href="#" class="tool-link">Explore Calculators <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-text">MultiTools</div>
+                    </div>
+                    <p class="tagline">Simplifying Your Digital Life</p>
+                    <p>Your one-stop destination for all digital tools and converters.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">All Tools</a></li>
+                        <li><a href="#">PDF Tools</a></li>
+                        <li><a href="#">Image Tools</a></li>
+                        <li><a href="#">Audio/Video Tools</a></li>
+                        <li><a href="#">Calculators</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> msmultitoolsite@gmail.com</p>
+                        <p>We respond to all inquiries within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Multi Tools Website. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const contactInfo = document.querySelector('.contact-info');
+            
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+                contactInfo.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                contactInfo.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                contactInfo.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+                
+                contactInfo.style.position = 'absolute';
+                contactInfo.style.top = '270px';
+                contactInfo.style.left = '0';
+                contactInfo.style.width = '100%';
+                contactInfo.style.backgroundColor = 'white';
+                contactInfo.style.padding = '20px';
+                contactInfo.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Logo upload functionality (placeholder)
+        document.querySelector('.logo-upload').addEventListener('click', function() {
+            alert('Logo upload functionality would be implemented here.');
+        });
+    </script>
+</body>
+</html>
